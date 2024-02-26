@@ -44,7 +44,7 @@ Finally, to enable FreeRTOS, in section **Middleware and Software Packs** click 
 
 
 ## Projects 
-### [Binary Semaphore](./Binary%20Semaphore/)
+### [Binary Semaphore](./Inter-Thread%20Communication/Binary%20Semaphore/)
 
 Semaphores are used to synchronize tasks with other events in the system. Waiting for semaphore is equal to wait() procedure, task is in a blocked state not taking CPU time. In FreeRTOS implementation semaphores are based on queue mechanisms. There are some types of semaphores in FreeRTOS, like binary, counting or mutex.
 
@@ -79,7 +79,7 @@ void TaskNormalFunction(void const * argument)
 ```
 this **TaskNormalFunction** shows how to use a Binary Semaphore to stop the execution of other threads until the current thread finish his work, in this algorithm waiting for the user Button1 is pressed.
 
-### [Message Queue](./Message%20Queue/)
+### [Message Queue](./Inter-Thread%20Communication/Message%20Queue/)
 A Message Queue is the basic communication model between threads. The data is passed from one thread to another in a FIFO-like operation. Using Message Queue functions, you can send, receive, or wait for messages. The queue is made by integers or pointers 32-bit long. The length of queue is declared during creation phase and is defined as a number of items which will be send via queue.
 
 <img src="./Inter-Thread Communication/Message%20Queue/Images/messageQueue.png" alt="Message Queue" width="300" />
@@ -143,7 +143,7 @@ void ReceiverTaskFunction(void const * argument)
 ```
 this **ReceiverTaskFunction** will receive the streamed message. With `retvalue=osMessageGet(myQueueHandle,4000)` we get data from queue and with `((MessageStruct*)retvalue.value.p) -> Source` we decode data from osEvent structure.
 
-### [Mail Queue](./Mail%20Queue/)
+### [Mail Queue](./Inter-Thread%20Communication/Mail%20Queue/)
 A Mail Queue operates similarly to a Message Queue, but instead of transferring a 32-bit value, the data that is being transferred consists of memory blocks that need to be allocated, before putting data in, and free-up, after taking data out. The Mail Queue uses a memory pool to create formatted and fixed-size memory blocks and passes pointers to these blocks in a Message Queue. This allows the data to stay in an allocated memory block while only a pointer is moved between the separate threads, and it’s an advantage to Message Queues because there are no big data transfers.
 
 <img src="./Inter-Thread Communication/Mail%20Queue/Images/mailQueue.png" alt="Mail Queue" width="300" />
